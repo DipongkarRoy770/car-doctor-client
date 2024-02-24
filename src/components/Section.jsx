@@ -2,7 +2,7 @@ import person from '../assets/images/about_us/person.jpg'
 import parts from '../assets/images/about_us/parts.jpg'
 const Section = () => {
     return (
-        <div className="hero min-h-screen bg-base-200 pt-4">
+        <div className="hero min-h-screen bg-base-200 mt-16">
             <div className="hero-content flex-col lg:flex-row">
 
                 <div className='lg:w-1/2 relative'>
