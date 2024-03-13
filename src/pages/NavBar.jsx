@@ -1,15 +1,23 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/logo.svg"
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 
+
 const NavBar = () => {
+    
     const { user, logOut } = useContext(AuthContext)
     const navInfo = <>
-        <Link to='/' className="text-xl font-semibold mr-3">Home</Link>
-        {user && <Link to='/booking' className="text-xl font-semibold mr-3">My Booking</Link>}
-       
+    <NavLink  to='/' className="text-xl font-semibold mr-3">Home</NavLink>
+        <NavLink to='/service' className="text-xl font-semibold mr-3">Service</NavLink>
+        <NavLink to='/about' className="text-xl font-semibold mr-3">About</NavLink>
+        {user && <NavLink  to='/booking' className="text-xl font-semibold mr-3">My Booking</NavLink>}
+
+
     </>
+
+
+
     const logout = () => {
         logOut()
             .then(result => {
@@ -53,7 +61,7 @@ const NavBar = () => {
                 {
                     user ?
                         <button onClick={logout} className="btn btn-accent">LogOut</button>
-                        :<Link to='login'><button className="text-xl w-32 rounded h-14 before:absolute before:block before:inset-0 before:-z-10 before:bg-sky-500 text-white after:block hover:after:w-full after:w-0 after:hover:left-0 after:right-0 after:top-0 after:h-full after:-z-10 after:duration-300 after:bg-sky-900 after:absolute relative inline-block">Login</button></Link>
+                        : <Link to='login'><button className="text-xl w-32 rounded h-14 before:absolute before:block before:inset-0 before:-z-10 before:bg-sky-500 text-white after:block hover:after:w-full after:w-0 after:hover:left-0 after:right-0 after:top-0 after:h-full after:-z-10 after:duration-300 after:bg-sky-900 after:absolute relative inline-block">Login</button></Link>
                 }
 
             </div>

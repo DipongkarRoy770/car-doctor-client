@@ -5,6 +5,10 @@ import fb from '../assets/social/facebook.svg'
 import insta from '../assets/social/instagram.svg'
 import linkedin from '../assets/social/linkedin.svg'
 import twiter from '../assets/social/twitter.svg'
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init()
 
 const Team = () => {
     
@@ -16,7 +20,8 @@ const Team = () => {
                 <div className="text-1xl px-4 mt-3"> the majority have suffered alteration in some form, by injected humour, or randomised words which do not look even slightly believable.</div>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 px-6 md:px-3 my-4">
-                <div className="card w-96 bg-base-100 border-2 border-green-300">
+                <div className="card w-96 bg-base-100 border-2 border-green-300" data-aos="fade-right"
+     >
                     <figure className="px-10 pt-10">
                         <img src={person1} alt="Shoes" className="rounded border-2 border-red-300 w-60 h-72 bg-red-100 px-2 py-2" />
                     </figure>
@@ -31,7 +36,7 @@ const Team = () => {
                         </div>
                     </div>
                 </div>
-                <div className="card w-96 bg-base-100 border-2 border-green-300">
+                <div className="card w-96 bg-base-100 border-2 border-green-300"  data-aos="flip-up">
                     <figure className="px-10 pt-10">
                         <img src={person2} alt="Shoes" className="rounded border-2 border-red-300 w-60 h-72 bg-red-100 px-2 py-2" />
                     </figure>
@@ -46,7 +51,9 @@ const Team = () => {
                         </div>
                     </div>
                 </div>
-                <div className="card w-96 bg-base-100 border-2 border-green-300">
+                <div className="card w-96 bg-base-100 border-2 border-green-300" data-aos="fade-right"
+     data-aos-offset="300"
+     data-aos-easing="ease-in-sine">
                     <figure className="px-10 pt-10">
                         <img src={person3} alt="Shoes" className="rounded border-2 border-red-300 w-60 h-72 bg-red-100 px-2 py-2" />
                     </figure>

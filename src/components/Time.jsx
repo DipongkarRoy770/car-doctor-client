@@ -1,8 +1,15 @@
-
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init()
 
 const Time = () => {
     return (
-        <div className="flex items-center justify-around w-[1100px] h-[250px] bg-black opacity-70 mx-auto mt-20	">
+
+        <div className="flex items-center justify-around  md:w-[1100px] h-[250px] bg-black opacity-70 mx-auto mt-20	"  data-aos="flip-left"
+        data-aos-easing="ease-out-cubic"
+        data-aos-duration="1400">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 md:gap-3">
             <div className="flex items-center text-white">
                 <div className="mr-4">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -41,7 +48,10 @@ const Time = () => {
                     <h2 className="font-semibold text-xl">Liza Street, New York</h2>
                 </div>
             </div>
+
+            </div>
         </div>
+
     );
 };
 

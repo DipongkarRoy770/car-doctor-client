@@ -7,6 +7,8 @@ import Register from "../components/Register";
 import Booking from "../components/Booking";
 import BookService from "../components/BookService";
 import PrivateRoutes from "./PrivateRoutes";
+import Service from "../components/Service";
+import Section from "../components/Section";
 
 export const router = createBrowserRouter([
     {
@@ -18,7 +20,15 @@ export const router = createBrowserRouter([
           path:'/',
           element:<Home></Home>
         },
-        
+        {
+          path:"service",
+          element:<PrivateRoutes><Service></Service></PrivateRoutes>,
+          loader:()=>fetch('http://localhost:5000/cars')
+        },
+        {
+          path:'about',
+          element:<Section></Section>
+        },
         {
           path:'login',
           element:<Login></Login>
