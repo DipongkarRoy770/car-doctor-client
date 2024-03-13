@@ -7,8 +7,8 @@ const NavBar = () => {
     const { user, logOut } = useContext(AuthContext)
     const navInfo = <>
         <Link to='/' className="text-xl font-semibold mr-3">Home</Link>
-
-        <Link to='/signup' className="text-xl font-semibold mr-3">Resgister</Link>
+        {user && <Link to='/booking' className="text-xl font-semibold mr-3">My Booking</Link>}
+       
     </>
     const logout = () => {
         logOut()
@@ -20,7 +20,7 @@ const NavBar = () => {
             .catch(error => console.log(error))
     }
     return (
-        <div className="navbar bg-slate-200">
+        <div className="navbar">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -41,14 +41,19 @@ const NavBar = () => {
 
 
 
-                <p className="text-1xl font-medium mr-3">Welcome to<br /><p><small>{user?.displayName}</small></p></p>
+                {
+                    user && <>
+                        <h3 className="text-1xl font-medium mr-3">Welcome to<br /><p><small>{user?.email}</small></p></h3>
 
-                <img className=" w-14 h-14 rounded-full mr-3" src={user?.photoURL} alt="" />
+                        <img className=" w-14 h-14 rounded-full mr-3" src={user?.photoURL} alt="" />
+                    </>
+                }
 
 
                 {
                     user ?
-                        <button onClick={logout} className="btn btn-accent">LogOut</button> : <Link to='/login' className="text-xl font-semibold mr-3">Login</Link>
+                        <button onClick={logout} className="btn btn-accent">LogOut</button>
+                        :<Link to='login'><button className="text-xl w-32 rounded h-14 before:absolute before:block before:inset-0 before:-z-10 before:bg-sky-500 text-white after:block hover:after:w-full after:w-0 after:hover:left-0 after:right-0 after:top-0 after:h-full after:-z-10 after:duration-300 after:bg-sky-900 after:absolute relative inline-block">Login</button></Link>
                 }
 
             </div>

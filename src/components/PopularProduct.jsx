@@ -20,8 +20,8 @@ const PopularProduct = () => {
                             <img src={product6} alt="Shoes" className="rounded-xl w-60 h-52 bg-red-100 px-2 py-2" />
                         </figure>
                         <div className="card-body items-center text-center">
-                            <h2 className="card-title">Car Engine Plug</h2>
-                            <p>price : $20.00</p>
+                            <h2 className="card-title text-cyan-500">Car Engine Plug</h2>
+                            <p>price : $30.00</p>
                         </div>
                     </div>
                 </div>
