@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const BookService = () => {
@@ -34,7 +35,18 @@ const BookService = () => {
             body:JSON.stringify(order)
         })
          .then(res=>res.json())
-         .then(data=>console.log(data))
+         .then(data=>{
+            console.log(data)
+            if(data.acknowledged===true){
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Confirm order have been saved",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+            }
+         })
     }
     return (
         <div>

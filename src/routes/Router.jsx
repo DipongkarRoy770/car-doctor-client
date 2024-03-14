@@ -21,9 +21,9 @@ export const router = createBrowserRouter([
           element:<Home></Home>
         },
         {
-          path:"service",
-          element:<PrivateRoutes><Service></Service></PrivateRoutes>,
-          loader:()=>fetch('http://localhost:5000/cars')
+          path:'service',
+          element:<PrivateRoutes><Service></Service></PrivateRoutes>
+          // loader:()=>fetch('http://localhost:5000/cars')
         },
         {
           path:'about',

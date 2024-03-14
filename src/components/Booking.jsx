@@ -1,11 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import TableRow from "./TableRow";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Swal from "sweetalert2";
 
 
 const Booking = () => {
     const { user } = useContext(AuthContext)
     const [bookings, setBooking] = useState([])
+    const notify = () => toast("booking data deleted!");
     const url = `http://localhost:5000/booking?email=${user?.email}`
     useEffect(() => {
         fetch(url)
@@ -22,7 +26,7 @@ const Booking = () => {
          .then(data=>{
             console.log(data)
             if(data.deletedCount>0){
-                alert('booking data deleted')
+                notify()
                 const remaining =bookings.filter(book =>book._id!==id) 
                 setBooking(remaining)
             }
@@ -46,6 +50,13 @@ const Booking = () => {
                 search.status ='confirm';
                 const result = [search,...remaining]
                 setBooking(result)
+                
+                    Swal.fire({
+                        title: 'success!',
+                        text: 'Coffee update successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                      })
             }
          })
     }
@@ -84,6 +95,7 @@ const Booking = () => {
 
                 </table>
             </div>
+            <ToastContainer />
         </div>
     );
 };

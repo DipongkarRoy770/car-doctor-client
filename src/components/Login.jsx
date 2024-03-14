@@ -1,9 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from '../assets/images/login/login.svg'
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
+
+    const location = useLocation();
+    const navigate = useNavigate();
    
     const { signInUser, signInGoogle } = useContext(AuthContext)
     const handleLogin = (event) => {
@@ -17,7 +21,14 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
-                alert('login sucessfully')
+                navigate(location?.state ? location?.pathname : '/');
+                Swal.fire({
+                    title: 'success!',
+                    text: 'User login fast now',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                  })
+                  form.reset('')
             })
             .catch(error => console.log(error))
     }
@@ -26,7 +37,12 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
-                alert('Google accound diye login korci')
+                Swal.fire({
+                    title: 'success!',
+                    text: 'User login fast now',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                  })
             })
             .catch(error => console.log(error))
 

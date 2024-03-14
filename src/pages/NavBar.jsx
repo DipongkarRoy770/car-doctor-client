@@ -2,28 +2,28 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/logo.svg"
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const NavBar = () => {
-    
+
     const { user, logOut } = useContext(AuthContext)
     const navInfo = <>
-    <NavLink  to='/' className="text-xl font-semibold mr-3">Home</NavLink>
+        <NavLink to='/' className="text-xl font-semibold mr-3">Home</NavLink>
         <NavLink to='/service' className="text-xl font-semibold mr-3">Service</NavLink>
         <NavLink to='/about' className="text-xl font-semibold mr-3">About</NavLink>
-        {user && <NavLink  to='/booking' className="text-xl font-semibold mr-3">My Booking</NavLink>}
+        {user && <NavLink to='/booking' className="text-xl font-semibold mr-3">My Booking</NavLink>}
 
 
     </>
 
 
 
-    const logout = () => {
+    const logout = () => {   
         logOut()
             .then(result => {
                 const user = result.user
                 console.log(user)
-                alert('sala mar ber kore dilam ja')
             })
             .catch(error => console.log(error))
     }
@@ -65,6 +65,7 @@ const NavBar = () => {
                 }
 
             </div>
+           
         </div>
     );
 };
