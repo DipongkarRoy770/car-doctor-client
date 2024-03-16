@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import logo from '../assets/images/login/login.svg'
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Register = () => {
 
@@ -18,7 +19,13 @@ const Register = () => {
          .then(result=>{
             const user = result.user 
             console.log(user)
-            alert('user accound kula hoyece')   
+            Swal.fire({
+                title: 'success!',
+                text: 'User login fast now',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+              })
+            form.reset('')  
          })
          .catch(error=>console.log(error))
 

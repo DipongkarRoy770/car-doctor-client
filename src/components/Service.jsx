@@ -19,7 +19,7 @@ const Service = () => {
     const [search ,setSearch] =useState('')
 
     useEffect(() => {
-        fetch(`http://localhost:5000/cars?search=${search}&sort=${asc ? 'asc' : 'desc'}`)
+        fetch(`https://car-doctor-server-beta-liart.vercel.app/cars?search=${search}&sort=${asc ? 'asc' : 'desc'}`)
             .then(res => res.json())
             .then(data => setServices(data))
     }, [asc,search])

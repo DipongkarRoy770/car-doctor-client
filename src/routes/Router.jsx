@@ -23,7 +23,6 @@ export const router = createBrowserRouter([
         {
           path:'service',
           element:<PrivateRoutes><Service></Service></PrivateRoutes>
-          // loader:()=>fetch('http://localhost:5000/cars')
         },
         {
           path:'about',
@@ -40,7 +39,7 @@ export const router = createBrowserRouter([
         {
           path:'book/:id',
           element:<BookService></BookService>,
-          loader:({params})=>fetch(`http://localhost:5000/cars/${params.id}`)
+          loader:({params})=>fetch(`https://car-doctor-server-beta-liart.vercel.app/cars/${params.id}`)
         },
         {
           path:'booking',

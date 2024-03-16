@@ -8,45 +8,45 @@ const BookService = () => {
     const { user } = useContext(AuthContext)
     const service = useLoaderData()
     //console.log(service)
-    const {_id,title, price ,img } = service;
+    const { _id, title, price, img } = service;
 
-    const submitData =(event)=>{
+    const submitData = (event) => {
         event.preventDefault()
-        const form = event.target ;
-        const name = form.name.value ;
-        const date = form.date.value ;
+        const form = event.target;
+        const name = form.name.value;
+        const date = form.date.value;
         const email = user?.email;
-        const price = form.price.value ;
-        const order ={
-            customar : name ,
+        const price = form.price.value;
+        const order = {
+            customar: name,
             email,
-            service_name:title ,
-            service_img:img ,
+            service_name: title,
+            service_img: img,
             date,
-            price ,
-            service : _id 
+            price,
+            service: _id
         }
         console.log(order)
-        fetch('http://localhost:5000/booking',{
-            method:'POST',
+        fetch('https://car-doctor-server-beta-liart.vercel.app/booking', {
+            method: 'POST',
             headers: {
-                'content-type':'application/json' ,
+                'content-type': 'application/json',
             },
-            body:JSON.stringify(order)
+            body: JSON.stringify(order)
         })
-         .then(res=>res.json())
-         .then(data=>{
-            console.log(data)
-            if(data.acknowledged===true){
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Confirm order have been saved",
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
-            }
-         })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.acknowledged === true) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Confirm order have been saved",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
     }
     return (
         <div>
@@ -84,7 +84,7 @@ const BookService = () => {
                     </div>
                 </div>
                 <div className="px-12">
-                   
+
                     <input className="btn btn-success w-full mt-4" type="submit" value="Confrom Order" />
                 </div>
             </form>
