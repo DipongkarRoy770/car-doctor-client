@@ -53,7 +53,7 @@ const NavBar = () => {
                     user && <>
                         <h3 className="text-1xl font-medium mr-3">Welcome to<br /><p><small>{user?.email}</small></p></h3>
 
-                        <img className=" w-14 h-14 rounded-full mr-3" src={user?.photoURL} alt="" />
+                        <img className=" w-14 h-14 rounded-full mr-3 hidden md:block" src={user?.photoURL} alt="" />
                     </>
                 }
 
