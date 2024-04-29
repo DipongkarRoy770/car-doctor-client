@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from '../assets/images/login/login.svg'
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
 
-const Register = () => {
 
+const Register = () => {
+     
+    const navigate = useNavigate()
+    const location = useLocation()
     const {createSingUp} = useContext(AuthContext)
     const handleSignUp =(event)=>{
         event.preventDefault()
@@ -17,8 +20,11 @@ const Register = () => {
         console.log(name,email,password)
         createSingUp(email,password)
          .then(result=>{
-            const user = result.user 
-            console.log(user)
+            const loginUser = result.user 
+            console.log(loginUser)
+            navigate(location?.state?location.state :'/')
+
+            
             Swal.fire({
                 title: 'success!',
                 text: 'User login fast now',

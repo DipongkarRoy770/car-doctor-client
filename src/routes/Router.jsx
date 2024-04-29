@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
         },
         {
           path:'book/:id',
-          element:<BookService></BookService>,
+          element:<PrivateRoutes><BookService></BookService></PrivateRoutes>,
           loader:({params})=>fetch(`https://car-doctor-server-beta-liart.vercel.app/cars/${params.id}`)
         },
         {

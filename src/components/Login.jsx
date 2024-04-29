@@ -3,11 +3,12 @@ import logo from '../assets/images/login/login.svg'
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const Login = () => {
     const location = useLocation()
     const navigate = useNavigate()
-  console.log(location)
+ // console.log(location)
     const { signInUser, signInGoogle } = useContext(AuthContext)
     const handleLogin = (event) => {
         event.preventDefault()
@@ -18,9 +19,19 @@ const Login = () => {
         console.log(email, password)
         signInUser(email, password)
             .then(result => {
-                const user = result.user;
-                console.log(user)
-               navigate(location?.state?location.state :'/')
+                const loginUser = result.user;
+                console.log(loginUser)
+               //navigate(location?.state?location.state :'/')
+               const user = {email}
+
+            // acess your JWT token:
+            axios.post('http://localhost:5000/jwt' ,user ,{withCredentials:'true'})
+             .then(res =>{
+                console.log(res.data)
+                if(res.data.success){
+                    navigate(location?.state?location.state :'/')
+                }
+             })
                 Swal.fire({
                     title: 'success!',
                     text: 'User login fast now',

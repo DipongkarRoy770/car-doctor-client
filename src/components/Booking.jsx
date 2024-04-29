@@ -4,6 +4,7 @@ import TableRow from "./TableRow";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Swal from "sweetalert2";
+import axios from "axios";
 
 
 const Booking = () => {
@@ -12,9 +13,14 @@ const Booking = () => {
     const notify = () => toast("booking data deleted!");
     const url = `https://car-doctor-server-beta-liart.vercel.app/booking?email=${user?.email}`
     useEffect(() => {
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setBooking(data))
+
+        axios.get(url ,{withCredentials:true})
+         .then(res =>{
+            setBooking(res.data)
+         })
+        // fetch(url)
+        //     .then(res => res.json())
+        //     .then(data => setBooking(data))
     }, [url]);
 
     const handleDelete = (id)=>{
