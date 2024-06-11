@@ -47,7 +47,7 @@ const NavBar = () => {
       setTheme("light");
     }
   };
-  console.log(theme);
+  //console.log(theme);
   return (
     <div className="navbar">
       <div className="navbar-start">

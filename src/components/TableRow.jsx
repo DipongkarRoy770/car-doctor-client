@@ -3,6 +3,7 @@
 const TableRow = ({ service, handleDelete, handleBookingConfirm }) => {
     //console.log(service)
     const { _id, service_img, customar, price, date, service_name, status } = service;
+    console.log(service)
 
     return (
         <tr>
