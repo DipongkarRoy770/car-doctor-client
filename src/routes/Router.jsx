@@ -22,7 +22,7 @@ export const router = createBrowserRouter([
         },
         {
           path:'service',
-          element:<PrivateRoutes><Service></Service></PrivateRoutes>
+          element:<Service></Service>
         },
         {
           path:'about',

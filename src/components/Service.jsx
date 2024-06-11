@@ -13,6 +13,7 @@ AOS.init()
 const Service = () => {
     // const {loading} = useContext(AuthContext)
     const [services, setServices] = useState([])
+    console.log(services);
     const [asc, SetAsc] = useState(true)
 
     const searchRef = useRef(null)
@@ -23,11 +24,6 @@ const Service = () => {
             .then(res => res.json())
             .then(data => setServices(data))
     }, [asc,search])
-    // if (loading) {
-    //     return <>
-    //         <div className="w-42 h-48 mx-auto py-3  border-l-2 border-green-500 rounded-full flex justify-center items-center animate-[spin_1.8s_linear_infinite]"><div className="w-16 h-16  border-b-2 border-indigo-500 rounded-full flex justify-center items-center animate-[spin_1.8s_linear_infinite]"><div className="w-10 h-10  border-r-2  border-sky-500 rounded-full animate-[spin_1.8s_linear_infinite]"></div></div></div>
-    //     </>
-    // }
     const handleSearch=()=>{
         console.log(searchRef.current.value)
         setSearch(searchRef.current.value)
